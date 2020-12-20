@@ -31,6 +31,7 @@ func Client() []*predict.SortContent{
 		fmt.Println(err)
 		return nil
 	}
+	fmt.Printf("itemFea:%#v\n", itemFea)
 	client := predict.NewPredictClientFactory(transport, protocolFactory)
 	ctx := context.TODO()
 	req := predict.Req{

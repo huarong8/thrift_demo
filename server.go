@@ -13,6 +13,7 @@ type PredictImpl struct {
 }
 
 func (p *PredictImpl) Predict(ctx context.Context, req *predict.Req) (r *predict.Rsp, err error){
+	t1 := time.Now()
 	contents := []*predict.SortContent{}
 	for i := 0; i < 10; i++ {
 		sortContent := predict.SortContent{ID: int64(i), Score: 0.01}
@@ -22,6 +23,7 @@ func (p *PredictImpl) Predict(ctx context.Context, req *predict.Req) (r *predict
 
 	time.Sleep(40 * time.Millisecond)
 	rsp := predict.Rsp{Status: "", Contents: contents, Features: &featrues}
+	fmt.Printf("cost time:%d\n", time.Now().Sub(t1).Milliseconds())
 	return &rsp, nil
 }
 // Parameters:
