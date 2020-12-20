@@ -36,7 +36,7 @@ func Serve(){
 	protocolFactory := thrift.NewTBinaryProtocolFactoryDefault()
 	transportFactory := thrift.NewTFramedTransportFactory(thrift.NewTTransportFactory())
 	predictImpr := &PredictImpl{}
-	addr := "localhost:9999"
+	addr := "10.124.16.133:9999"
 	processor := predict.NewPredictProcessor(predictImpr)
 
 	tServerSocket,err := thrift.NewTServerSocket(addr)
